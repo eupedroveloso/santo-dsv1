@@ -23,4 +23,6 @@ Esse é o **único** arquivo Figma deste projeto. O token dá acesso a outros ar
 
 Ícones vêm só de `@dev-mbr/icons` (repo `rtg-icons`, GitHub Packages) — os mesmos da aba Icons do Figma. Nada de `lucide-react`, Heroicons, Font Awesome ou SVG inline à mão. Ícone que falta se publica no `rtg-icons`, não se improvisa aqui.
 
+Os nomes levam sufixo de peso: `ArrowRightRegular`, `CartFlatbedBoxesLight` (`Regular`/`Light`/`Solid`/`Duotone`), e os de marca usam `Brand` (`InstagramBrand`). O nome puro não existe — o README do `rtg-icons` está errado nesse ponto.
+
 Ao implementar um design do Figma, carregue a skill `figma-design-to-code` **antes** de chamar `get_design_context`. O que ela devolve é referência genérica (Tailwind nativo, às vezes hex cru) — traduzir para Santo DS é obrigatório, não opcional.

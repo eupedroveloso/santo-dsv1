@@ -177,13 +177,32 @@ A UI nasce no Figma. Ao implementar um nó:
 Os ícones do Santo DS vêm de **um** lugar: o pacote `@dev-mbr/icons` (repositório `rtg-icons`, publicado no GitHub Packages). São os mesmos ícones da aba **Icons** do Figma — os component sets `icons` e `icons-alt` da biblioteca `Santo DS`.
 
 ```tsx
-import { ArrowRight, CartFlatbedBoxes } from "@dev-mbr/icons";
+import { ArrowRightRegular, CartFlatbedBoxesLight, InstagramBrand } from "@dev-mbr/icons";
 
-<ArrowRight size={20} />                    // herda a cor do texto
-<CartFlatbedBoxes size={24} strokeWidth={1.5} />
+<ArrowRightRegular size={20} />                     // herda a cor do texto
+<CartFlatbedBoxesLight size={24} strokeWidth={1.5} />
 ```
 
-**Nomes traduzem direto do Figma:** o componente Figma `cart-flatbed-boxes` é `<CartFlatbedBoxes />`. Kebab-case vira PascalCase, e as subpastas do repositório (`svg/ui/`, `svg/social/`) são só organização — não entram no nome.
+### ⚠️ O README do rtg-icons está errado sobre os nomes
+
+O README diz `import { ArrowRight, Instagram }`. **Esses dois nomes não existem no pacote** — verificado na v1.0.2. Seguir o README dá erro de importação.
+
+A convenção real é **`{Nome}{Peso}`**:
+
+| Tipo | Sufixo | Exemplo |
+|---|---|---|
+| Ícone comum | `Regular`, `Light`, `Solid`, `Duotone` | `ArrowRightRegular`, `CartFlatbedBoxesLight` |
+| Ícone de marca | `Brand` (não tem peso) | `InstagramBrand`, `AirbnbBrand`, `AmazonBrand` |
+
+**Nunca importe o nome puro.** `ArrowRight` não existe; `ArrowRightRegular` sim. Na dúvida, confirme antes de escrever:
+
+```bash
+node -e "const m=require('@dev-mbr/icons'); console.log(Object.keys(m).filter(k=>k.startsWith('ArrowRight')))"
+```
+
+**Do Figma para o código:** o componente `cart-flatbed-boxes` vira `CartFlatbedBoxes` + o peso escolhido. Kebab-case vira PascalCase; as subpastas do repositório (`svg/ui/`, `svg/social/`) são só organização e não entram no nome.
+
+**Inventário da v1.0.2:** 4.791 ícones × 4 pesos + 592 de marca = 19.755 componentes. Uma falha conhecida: **`FaceMeh` é o único sem variante `Solid`** — use outro peso ou outro ícone.
 
 **Props** (API idêntica à do Lucide): `size` (24), `color` (`currentColor`), `strokeWidth` (2), `absoluteStrokeWidth` (false), `className`, mais qualquer prop SVG nativa.
 
