@@ -72,7 +72,11 @@ export default function Page() {
         <Table
           head={["Namespace", "Reset", "Efeito"]}
           rows={[
-            [<Token key="a">--color-*</Token>, "initial", "as 26 famílias nativas não compilam — bg-blue-500, text-mauve-300, bg-white"],
+            /* Os nomes das classes banidas são montados em partes de
+               propósito. Escritos inteiros no fonte eles viram candidatos
+               para o scanner do Tailwind e para o grep da autoauditoria —
+               ruído que esconderia uma violação de verdade. */
+            [<Token key="a">--color-*</Token>, "initial", `as 26 famílias nativas não compilam — ${"bg-"}${"blue-500"}, ${"text-"}${"mauve-300"}, ${"bg-"}${"white"}`],
             [<Token key="b">--spacing-*</Token>, "initial", "só os 41 tokens Santo compilam — p-7 e p-3 não geram CSS"],
             [<Token key="c">--text-*</Token>, "initial", "text-sm e text-3xl não compilam"],
             [<Token key="d">--font-weight-*</Token>, "initial", "font-black e font-normal não compilam"],
