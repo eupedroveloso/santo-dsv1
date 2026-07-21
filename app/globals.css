@@ -81,6 +81,79 @@
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
 
+  /* =================================================================
+     SPACE PRIMITIVES — 41 tokens, espelho da coleção do Figma.
+     O nome É o valor: `24` vale 24px. Nenhuma conversão, nenhum cálculo.
+
+     ⚠️ ATENÇÃO A QUEM VEM DO TAILWIND: aqui `p-4` são 4px, NÃO 16px.
+     No Tailwind nativo a escala é calculada (`calc(--spacing * 4)`), e
+     `p-4` dá 1rem. Aqui não existe cálculo: o número é o pixel.
+
+     A escala é FECHADA. `--spacing-*: initial` apaga a base do Tailwind,
+     então só estes 41 valores compilam — `p-7`, `p-3` e `p-100` não
+     geram CSS. Ninguém consegue inventar um espaçamento que o designer
+     não definiu. Verificado no CSS de saída.
+
+     Vale para todo o namespace: p-*, m-*, gap-*, w-*, h-*, space-*, etc.
+     ================================================================= */
+
+  --spacing-*: initial;
+
+  /* passo +1 */
+  --spacing-0: 0px;
+  --spacing-1: 1px;
+  --spacing-2: 2px;
+
+  /* passo +2 */
+  --spacing-4: 4px;
+  --spacing-6: 6px;
+  --spacing-8: 8px;
+  --spacing-10: 10px;
+  --spacing-12: 12px;
+  --spacing-14: 14px;
+  --spacing-16: 16px;
+
+  /* passo +4 */
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-28: 28px;
+  --spacing-32: 32px;
+  --spacing-36: 36px;
+  --spacing-40: 40px;
+  --spacing-44: 44px;
+  --spacing-48: 48px;
+
+  /* passo +8 */
+  --spacing-56: 56px;
+  --spacing-64: 64px;
+  --spacing-72: 72px;
+  --spacing-80: 80px;
+  --spacing-88: 88px;
+  --spacing-96: 96px;
+  --spacing-104: 104px;
+  --spacing-112: 112px;
+  --spacing-120: 120px;
+  --spacing-128: 128px;
+
+  /* passo +16 */
+  --spacing-144: 144px;
+  --spacing-160: 160px;
+  --spacing-176: 176px;
+  --spacing-192: 192px;
+  --spacing-208: 208px;
+  --spacing-224: 224px;
+  --spacing-240: 240px;
+  --spacing-256: 256px;
+
+  /* passo +32 */
+  --spacing-288: 288px;
+  --spacing-320: 320px;
+
+  /* passo +64 */
+  --spacing-384: 384px;
+  --spacing-448: 448px;
+  --spacing-512: 512px;
+
   /* --- PENDENTE: cor ainda não importada do Figma ---
      Sobras do template do create-next-app; não são Santo DS. Saem quando
      as rampas (brand / neutral / feedback / product) forem importadas. */
