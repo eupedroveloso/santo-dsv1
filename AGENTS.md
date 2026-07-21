@@ -21,4 +21,6 @@ Esse é o **único** arquivo Figma deste projeto. O token dá acesso a outros ar
 
 **Todo trabalho visual — componente, tela, layout, cor, espaçamento, tipografia — vai para o subagente `santo-ds-guardian`.** Se o token necessário não existe, pare e proponha; nunca improvise um valor cru.
 
+Ícones vêm só de `@dev-mbr/icons` (repo `rtg-icons`, GitHub Packages) — os mesmos da aba Icons do Figma. Nada de `lucide-react`, Heroicons, Font Awesome ou SVG inline à mão. Ícone que falta se publica no `rtg-icons`, não se improvisa aqui.
+
 Ao implementar um design do Figma, carregue a skill `figma-design-to-code` **antes** de chamar `get_design_context`. O que ela devolve é referência genérica (Tailwind nativo, às vezes hex cru) — traduzir para Santo DS é obrigatório, não opcional.

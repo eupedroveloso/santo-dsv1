@@ -172,6 +172,40 @@ A UI nasce no Figma. Ao implementar um nó:
 4. **Hex cru na resposta não é autorização para hex cru no componente.** É sinal de que a camada do Figma não estava vinculada a variable. Rastreie de volta ao token; se não houver, seção 3.
 5. **Code Connect é o que faz isso escalar.** Mapear um componente Figma ao componente Santo faz o `get_design_context` devolver o componente certo em vez de markup genérico — resolve o problema na origem, em vez de você retraduzir a mesma tela toda vez. Quando existirem componentes Santo, proponha o mapeamento.
 
+## 5d. Ícones — `@dev-mbr/icons`
+
+Os ícones do Santo DS vêm de **um** lugar: o pacote `@dev-mbr/icons` (repositório `rtg-icons`, publicado no GitHub Packages). São os mesmos ícones da aba **Icons** do Figma — os component sets `icons` e `icons-alt` da biblioteca `Santo DS`.
+
+```tsx
+import { ArrowRight, CartFlatbedBoxes } from "@dev-mbr/icons";
+
+<ArrowRight size={20} />                    // herda a cor do texto
+<CartFlatbedBoxes size={24} strokeWidth={1.5} />
+```
+
+**Nomes traduzem direto do Figma:** o componente Figma `cart-flatbed-boxes` é `<CartFlatbedBoxes />`. Kebab-case vira PascalCase, e as subpastas do repositório (`svg/ui/`, `svg/social/`) são só organização — não entram no nome.
+
+**Props** (API idêntica à do Lucide): `size` (24), `color` (`currentColor`), `strokeWidth` (2), `absoluteStrokeWidth` (false), `className`, mais qualquer prop SVG nativa.
+
+### Proibido
+
+- **Qualquer outra biblioteca de ícones**: `lucide-react`, Heroicons, Material Icons, Font Awesome, Feather, Phosphor. A seção 2 vale aqui integralmente.
+- **SVG inline desenhado à mão** para "resolver rápido" um ícone que falta.
+- **Copiar o SVG de outro set** e colar como componente local.
+- ⚠️ A conta Figma alcança uma biblioteca `@shadcn/ui - Design System (Community)` com ícones `icon/x`, `icon/eye`, `icon/car`. **Não é o Santo DS** — é justamente o shadcn que a seção 2 bane. Se um nó vier com esses ícones, é defeito do arquivo: reporte.
+
+### Ícone que não existe
+
+Mesmo protocolo da seção 3, com um detalhe que muda tudo: **você não conserta isso neste repositório.**
+
+O fluxo é: o designer exporta o SVG do Figma → coloca em `svg/` no repo `rtg-icons` → tag de versão → o CI publica → aqui se atualiza a versão do pacote. Adicionar um SVG solto neste projeto quebra o elo Figma ↔ pacote e cria um ícone que só existe no código.
+
+Então: **pare, reporte qual ícone falta, e peça a publicação.** Não improvise.
+
+### Ponta solta: tamanho de ícone não é token
+
+`size` hoje é número cru (`size={20}`). Não existe token de tamanho de ícone nem no Figma nem no `@theme` — mesma lacuna de espaçamento e raio (seção 5b). Enquanto não existir, `size` é a exceção tolerada ao "nada de valor cru". Ao propor a escala de espaçamento, proponha a de ícone junto.
+
 ## 6. Next 16
 
 O `AGENTS.md` deste projeto é explícito: esta versão do Next tem breaking changes em relação ao que você aprendeu no treino. **Leia o guia relevante em `node_modules/next/dist/docs/` antes de escrever código** — Server vs Client Components, convenções de arquivo, APIs de layout. Respeite os avisos de depreciação.
