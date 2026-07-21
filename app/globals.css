@@ -28,6 +28,15 @@
   --font-weight-*: initial;
   --font-*: initial;
 
+  /* `--leading-*` e `--tracking-*` também são escalas tipográficas
+     nativas, e a seção 2 as proíbe junto com `text-sm`. Ficavam abertas
+     por omissão: `leading-6` e `tracking-tight` compilavam. Fechadas
+     aqui — o Figma não define letter-spacing, e a altura de linha já
+     vem pareada em `--text-*--line-height`, então nada do Santo depende
+     delas. Remove opinião do Tailwind sem adicionar vocabulário novo. */
+  --leading-*: initial;
+  --tracking-*: initial;
+
   /* Família — Albert Sans, carregada via next/font em app/layout.tsx */
   --font-sans: var(--font-albert-sans), ui-sans-serif, system-ui, sans-serif;
 
@@ -154,9 +163,81 @@
   --spacing-448: 448px;
   --spacing-512: 512px;
 
-  /* --- PENDENTE: cor ainda não importada do Figma ---
-     Sobras do template do create-next-app; não são Santo DS. Saem quando
-     as rampas (brand / neutral / feedback / product) forem importadas. */
+  /* =================================================================
+     STROKE — espelho da coleção `Primitives` do Figma, ramo `stroke/*`.
+     Conferido na biblioteca `Santo DS` em 21/07/2026
+     (variableSetKey 34745166657717895f…, filePath
+     `design_systems/Santo DS/variables/Primitives/float/stroke/...`).
+
+     Os dois ramos do Figma viram dois namespaces do Tailwind:
+
+       stroke/radius/md  ->  --radius-md        ->  rounded-md
+       stroke/width/md   ->  --border-width-md  ->  border-md
+
+     O prefixo `stroke/` é o nome da COLEÇÃO, não do token; ele some na
+     travessia do mesmo jeito que `Albert Sans/` sumiu na tipografia. A
+     folha (`md`, `2xl`, `full`) é o que designer e dev falam em voz alta,
+     e ela é preservada caractere por caractere.
+
+     ⚠️ PROCEDÊNCIA PARCIAL. Os 14 NOMES foram lidos da biblioteca via
+     MCP e batem 14/14 com a captura da UI de variables. Os VALORES não
+     puderam ser lidos na fonte: `get_variable_defs` só devolve variable
+     ligada a um nó, e nenhum nó alcançável do arquivo-base consome
+     `stroke/*` (não existe frame de documentação de stroke na página
+     `Fundations`). Os números abaixo vêm da captura da UI do designer.
+     Se algum dia divergirem, o Figma manda.
+     ================================================================= */
+
+  --radius-*: initial;
+  --border-width-*: initial;
+
+  /* --- stroke/radius/* -> rounded-* --- */
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --radius-full: 9999px;
+
+  /* --- stroke/width/* -> border-* ---
+     `--border-width-*` É um namespace real do Tailwind 4.3.3 — só não
+     vem populado no `@theme default`, por isso não aparece no
+     `theme.css`. Verificado no CSS de saída: `border-md` compila para
+     `border-width: var(--border-width-md)`, e o namespace também
+     alimenta `border-x-*`, `border-t-*` e `divide-x-*`.
+
+     ⚠️ ESCALA NÃO É FECHADA, ao contrário de spacing/text/radius.
+     O fallback numérico de `border-<n>` é `${n}px` no próprio utilitário,
+     não uma consulta ao tema — então `border-2` e `border-7` continuam
+     compilando e o reset acima não os alcança. Aqui a proibição é
+     disciplina de código, não erro de build. Ver /stroke na doc. */
+  --border-width-none: 0px;
+  --border-width-xs: 1px;
+  --border-width-sm: 2px;
+  --border-width-md: 4px;
+  --border-width-lg: 8px;
+
+  /* =================================================================
+     COR — PENDENTE. As rampas do Figma (brand / neutral / feedback /
+     product) ainda NÃO foram importadas.
+
+     `--color-*: initial` apaga as 26 famílias nativas do Tailwind, então
+     `bg-blue-500` e `text-mauve-300` deixam de gerar CSS. A proibição da
+     seção 2 vira erro de build em vez de disciplina de prompt — e o
+     reset continua valendo para as famílias que a próxima versão do
+     Tailwind inventar, sem ninguém precisar atualizar blocklist.
+
+     Sobram exatamente dois tokens, herdados do template do
+     create-next-app. NÃO são Santo DS: são o mínimo para a página de
+     documentação existir em monocromático até a cor chegar. Saem no dia
+     da importação das rampas.
+     ================================================================= */
+
+  --color-*: initial;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
