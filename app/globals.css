@@ -1,15 +1,90 @@
 @import "tailwindcss";
 
+/* =================================================================
+   Santo DS — espelho do Figma
+   Arquivo: SANTO-DS-RTG · fileKey mnd0vgxoY3eNq5RZHmVO2t
+   Biblioteca: "Santo DS"
+
+   TIPOGRAFIA — importada dos text styles `Albert Sans/{Categoria}/{Peso}`.
+   Os dois eixos do Figma viram dois namespaces do Tailwind:
+
+     Albert Sans/Heading 1/Bold  ->  text-heading-1 font-bold
+     Albert Sans/Body/Medium     ->  text-body font-medium
+
+   17 tokens (11 categorias + 6 pesos) compõem os 66 styles do Figma.
+   ================================================================= */
+
+@theme {
+  /* Apaga as escalas nativas do Tailwind. Sem isto, `text-sm` e
+     `font-black` continuariam válidos lado a lado com os tokens Santo,
+     e o DS passaria a ter dois vocabulários concorrentes. */
+  --text-*: initial;
+  --font-weight-*: initial;
+  --font-*: initial;
+
+  /* Família — Albert Sans, carregada via next/font em app/layout.tsx */
+  --font-sans: var(--font-albert-sans), ui-sans-serif, system-ui, sans-serif;
+
+  /* --- Escala tipográfica: tamanho + altura de linha pareados --- */
+
+  --text-heading-1: 72px;
+  --text-heading-1--line-height: 80px;
+
+  --text-heading-2: 56px;
+  --text-heading-2--line-height: 64px;
+
+  --text-heading-3: 40px;
+  --text-heading-3--line-height: 48px;
+
+  --text-heading-4: 32px;
+  --text-heading-4--line-height: 40px;
+
+  --text-heading-5: 24px;
+  --text-heading-5--line-height: 32px;
+
+  /* DIVERGE DO FIGMA (21/07/2026) — o Figma traz 32px, que dá ratio 1,6:
+     fora da progressão 1,111 / 1,143 / 1,200 / 1,250 / 1,333 dos demais
+     headings, e mais solto que o Heading 5, que é maior. Corrigido aqui
+     para 28px (ratio 1,4) por decisão do time.
+     PENDENTE: atualizar `Albert Sans/Heading 6/*` no Figma para 28px.
+     Enquanto isso não acontecer, os dois lados estão divergentes. */
+  --text-heading-6: 20px;
+  --text-heading-6--line-height: 28px;
+
+  --text-body-large: 18px;
+  --text-body-large--line-height: 28px;
+
+  --text-body: 16px;
+  --text-body--line-height: 24px;
+
+  --text-body-small: 14px;
+  --text-body-small--line-height: 24px;
+
+  --text-caption: 12px;
+  --text-caption--line-height: 16px;
+
+  --text-caption-small: 10px;
+  --text-caption-small--line-height: 16px;
+
+  /* --- Pesos --- */
+  /* `regular` (e não o `normal` do Tailwind) para espelhar o Figma. */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* --- PENDENTE: cor ainda não importada do Figma ---
+     Sobras do template do create-next-app; não são Santo DS. Saem quando
+     as rampas (brand / neutral / feedback / product) forem importadas. */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +95,7 @@
 }
 
 body {
+  font-family: var(--font-sans);
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
