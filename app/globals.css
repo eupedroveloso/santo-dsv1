@@ -2,8 +2,8 @@
 
 /* =================================================================
    Santo DS — espelho do Figma
-   Arquivo: SANTO-DS-RTG · fileKey mnd0vgxoY3eNq5RZHmVO2t
-   Biblioteca: "Santo DS"
+   Arquivo-base: Santo-DS · fileKey r7Q39Yc1LFPpgQqcg1ZwGN
+   Biblioteca: "Santo DS" · libraryKey lk-47f52894…
 
    TIPOGRAFIA — importada dos text styles `Albert Sans/{Categoria}/{Peso}`.
    Os dois eixos do Figma viram dois namespaces do Tailwind:
@@ -12,6 +12,13 @@
      Albert Sans/Body/Medium     ->  text-body font-medium
 
    17 tokens (11 categorias + 6 pesos) compõem os 66 styles do Figma.
+
+   PROCEDÊNCIA — os NOMES vêm da biblioteca `Santo DS` e estão conferidos:
+   mesmo libraryKey e mesmas style keys (ex.: `Albert Sans/Heading 1/Bold`
+   = 41de9e00…). Já os VALORES abaixo foram lidos da tabela de documentação
+   do arquivo SANTO-DS-RTG, que depois se revelou não ser o arquivo-base.
+   Como é a mesma biblioteca, devem ser os mesmos — mas isso ainda NÃO foi
+   verificado contra `Santo-DS`. Reconferir antes de tratar como definitivo.
    ================================================================= */
 
 @theme {

@@ -10,10 +10,12 @@ Não use shadcn/ui, Material, MUI, Chakra, Bootstrap, Ant, Mantine ou daisyUI. N
 
 O Santo DS vive em **dois lugares que são um sistema só**, com a mesma nomenclatura dos dois lados:
 
-- **Figma** — arquivo `SANTO-DS-RTG` (`fileKey: mnd0vgxoY3eNq5RZHmVO2t`, biblioteca `Santo DS`), onde a UI nasce
+- **Figma** — arquivo-base `Santo-DS` (`fileKey: r7Q39Yc1LFPpgQqcg1ZwGN`) e a biblioteca publicada `Santo DS` (`libraryKey: lk-47f52894…`)
 - **Código** — o `@theme` de `app/globals.css`
 
-Esse é o **único** arquivo Figma deste projeto. O token dá acesso a outros arquivos e bibliotecas da conta, mas acesso não é permissão: nada fora desse `fileKey` entra aqui. URL do Figma com `fileKey` diferente = pare e pergunte.
+Esse é o **único** arquivo Figma deste projeto. O token dá acesso a outros arquivos e bibliotecas da conta, mas acesso não é permissão: nada fora dele entra aqui. URL do Figma com `fileKey` diferente = pare e pergunte.
+
+⚠️ `mnd0vgxoY3eNq5RZHmVO2t` (`SANTO-DS-RTG`) **não** é o arquivo-base — alcança a mesma biblioteca, o que torna a confusão fácil. Confirme sempre o `fileKey`, não o nome.
 
 `brand/primary/500` no Figma é `--color-brand-primary-500` no código é `bg-brand-primary-500` na classe. Nunca renomeie na travessia. Divergência entre os dois não se resolve sozinha: reporte e pergunte, não sincronize em silêncio.
 
