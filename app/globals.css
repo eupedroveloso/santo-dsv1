@@ -2,7 +2,7 @@
 
 /* =================================================================
    Santo DS — espelho do Figma
-   Arquivo-base: Santo-DS · fileKey r7Q39Yc1LFPpgQqcg1ZwGN
+   Arquivo-base: SANTO-DS-RTG · fileKey mnd0vgxoY3eNq5RZHmVO2t
    Biblioteca: "Santo DS" · libraryKey lk-47f52894…
 
    TIPOGRAFIA — importada dos text styles `Albert Sans/{Categoria}/{Peso}`.
@@ -13,12 +13,11 @@
 
    17 tokens (11 categorias + 6 pesos) compõem os 66 styles do Figma.
 
-   PROCEDÊNCIA — os NOMES vêm da biblioteca `Santo DS` e estão conferidos:
-   mesmo libraryKey e mesmas style keys (ex.: `Albert Sans/Heading 1/Bold`
-   = 41de9e00…). Já os VALORES abaixo foram lidos da tabela de documentação
-   do arquivo SANTO-DS-RTG, que depois se revelou não ser o arquivo-base.
-   Como é a mesma biblioteca, devem ser os mesmos — mas isso ainda NÃO foi
-   verificado contra `Santo-DS`. Reconferir antes de tratar como definitivo.
+   PROCEDÊNCIA — os nomes vêm da biblioteca `Santo DS`, conferidos por
+   libraryKey e style key (ex.: `Albert Sans/Heading 1/Bold` = 41de9e00…).
+   Os valores vêm da tabela de documentação da página `Typography`, que é
+   a especificação escrita pelo designer — não foram lidos do objeto do
+   style em si. Se algum dia divergirem, o style manda.
    ================================================================= */
 
 @theme {

@@ -16,7 +16,7 @@ O Santo DS existe em dois lugares que **não são cópias, são o mesmo sistema*
 
 | Lugar | Papel |
 |---|---|
-| **Figma — arquivo `Santo-DS`** (`fileKey: r7Q39Yc1LFPpgQqcg1ZwGN`) | Arquivo-base onde o DS é autorado. |
+| **Figma — arquivo `SANTO-DS-RTG`** (`fileKey: mnd0vgxoY3eNq5RZHmVO2t`) | Arquivo-base onde o DS é autorado. Página `Fundations` (nó `5:2`). |
 | **Biblioteca publicada `Santo DS`** (`libraryKey: lk-47f52894…`) | O contrato: as Variables e Styles que o resto consome. |
 | **`@theme` em `app/globals.css`** | O mesmo sistema, expresso em código. |
 
@@ -38,7 +38,7 @@ Se o Figma tem um token que o código não tem, ou vice-versa, **você não esco
 
 ### Um arquivo, e só um
 
-**`r7Q39Yc1LFPpgQqcg1ZwGN` (`Santo-DS`) é o arquivo-base deste projeto.**
+**`mnd0vgxoY3eNq5RZHmVO2t` (`SANTO-DS-RTG`) é o arquivo-base deste projeto.**
 
 O token e a sessão MCP autenticada dão acesso a muito mais — outros arquivos da conta, bibliotecas de outros times, UI kits públicos. **Acesso não é permissão.** Nada além deste arquivo e da biblioteca `Santo DS` pertence a este repositório.
 
@@ -48,9 +48,9 @@ Portanto:
 - Se te passarem uma URL do Figma com `fileKey` diferente, **pare e pergunte** antes de qualquer coisa. Não assuma que é o Santo DS só porque parece um DS ou tem nome parecido.
 - Se um nó **dentro** deste arquivo vier vinculado a variable de outra biblioteca (ver seção 5b), isso é **defeito do arquivo Figma**, não uma fonte nova. Reporte; não traduza para o Santo por conta própria.
 
-⚠️ **`mnd0vgxoY3eNq5RZHmVO2t` (`SANTO-DS-RTG`) NÃO é o arquivo-base.** Foi usado por engano em 21/07/2026 e a tipografia foi importada a partir da documentação dele. Ele alcança a mesma biblioteca `Santo DS`, o que torna o erro difícil de notar — os nomes batiam. Trate qualquer coisa vinda de lá como suspeita até reconferir contra o arquivo-base.
+⚠️ **`r7Q39Yc1LFPpgQqcg1ZwGN` (`Santo-DS`) NÃO é o arquivo deste projeto.** Existe, tem nome quase idêntico e alcança a mesma biblioteca `Santo DS` — mas não é a base daqui. Não importe nada de lá sem perguntar.
 
-Essa é a lição a generalizar: **nome parecido e biblioteca em comum não provam que o arquivo é o certo.** Confirme o `fileKey`, não a aparência.
+A lição a generalizar: **nome parecido e biblioteca em comum não provam que o arquivo é o certo.** Confirme o `fileKey`, não a aparência.
 
 O risco de contaminação não é teórico: a conta enxerga `Materiais Didáticos VTSD`, que também tem `color/red/*` com numeração incompatível, e `❖ Nima Lib™ v1`, com text styles `Sora/Headings/*`. Importar de lá por engano enche o DS de valores que ninguém aprovou e que o designer não reconhece.
 
@@ -137,15 +137,11 @@ Quando encontrar um nome que julga ruim, **proponha a mudança nos dois lados de
 
 > Caso real já identificado: os frames do Figma se chamam `Ramp — Warning/Error/Success/Info`, mas as variables por baixo são `feedback/yellow`, `feedback/red`, `feedback/green`, `feedback/blue`. A documentação fala por papel e a variable fala por cor. Vale levantar — mas **não conserte unilateralmente**.
 
-## 5b. Inventário de cor — ⚠️ SUSPEITO, NÃO IMPORTE
+## 5b. Inventário de cor no Figma
 
-**Este inventário foi levantado do arquivo ERRADO** (`SANTO-DS-RTG`, `mnd0vgxoY3eNq5RZHmVO2t`, página `Fundations`, nó `5:2`) em 21/07/2026, antes de se saber que o arquivo-base é `Santo-DS` (`r7Q39Yc1LFPpgQqcg1ZwGN`).
+Levantado em 21/07/2026 do arquivo-base `SANTO-DS-RTG`, página `Fundations` (nó `5:2`). **Confirme antes de usar** — o Figma muda e este bloco envelhece.
 
-Motivo concreto da desconfiança: a biblioteca `Santo DS` publica uma coleção **`Primitives`** com nomes como `color/red/50` e `color/blue/0`. Mas os ramps que eu li traziam `brand/primary/*`, `neutral/light/*`, `feedback/yellow/*` e `product/*` — nomes que **não** apareceram na busca da biblioteca. Ou existe uma segunda coleção semântica, ou esses tokens são **locais do arquivo RTG** e não pertencem ao Santo DS base.
-
-**Antes de importar qualquer cor, refaça o levantamento no arquivo-base** e confirme via `search_design_system` que cada token retorna `libraryName: "Santo DS"`. Um token que só existe no RTG é escopo daquele produto, não do DS.
-
-O que segue fica só como pista do que procurar — **não como verdade**:
+> **Ponta solta a resolver antes de importar cor.** A busca na biblioteca `Santo DS` devolve uma coleção **`Primitives`** com `color/red/*` e `color/blue/*` — nomes que não batem com os ramps abaixo (`brand/*`, `neutral/*`, `feedback/*`, `product/*`). A explicação provável é que existam duas camadas (primitivos crus + semânticos que os referenciam) e que a busca, sendo por texto e ranqueada, só tenha devolvido a primeira. Mas isso **não foi confirmado**. Antes de importar cor, enumere as coleções de variables e descubra se `brand/primary/500` é um token próprio ou um alias de `color/blue/NN` — a resposta muda o que vai para o `@theme`.
 
 | Namespace | Escala | Observação |
 |---|---|---|
